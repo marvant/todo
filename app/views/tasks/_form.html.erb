@@ -20,6 +20,13 @@
   	<%= f.text_area :detail %>
   </p>
 
+  <% if @task.persisted? %>
+  <p>
+    <%= f.label :completed %> <br />
+    <%= f.check_box :completed %> <br />
+  </p>
+  <% end %>
+
   <p>
     <%= f.submit %>
   </p>
