@@ -1,5 +1,17 @@
 class TasksController < ApplicationController
 	before_filter :authenticate_user!
+
+	def index
+		if user_signed_in?
+			@user = current_user
+			@tasks = @user.tasks
+			@completed_tasks = @tasks.where(completed: :true)
+			@open_tasks = @tasks.where(completed: :false)
+		else
+			@errors = 'sign in first'
+		end
+	end
+
 	def new
 		@task = Task.new
 	end
