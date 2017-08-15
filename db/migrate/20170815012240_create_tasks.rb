@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.string :title
       t.date :deadline
       t.text :detail
-      t.boolean :completed
+      t.boolean :completed, default: false
 
       t.timestamps
     end
