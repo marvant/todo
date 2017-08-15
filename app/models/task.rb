@@ -3,4 +3,6 @@ class Task < ApplicationRecord
 
 	validates :title, { presence: true }
 	validates :deadline, { presence: true }
+
+	validates_length_of :title, :maximum => 255
 end
