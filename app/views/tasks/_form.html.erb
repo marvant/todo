@@ -1,0 +1,33 @@
+<%= form_for @task do |f| %>
+  <p>
+    <%= f.label :title %>
+    <% if @task.errors[:title].any? %>
+      <%= @task.errors[:title][0] %>
+    <% end %>
+    <br><%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :deadline %>
+    <% if @task.errors[:deadline].any? %>
+      <%= @task.errors[:deadline][0] %>
+    <% end %>
+    <br><%= f.date_field :deadline %>
+  </p>
+ 
+  <p>
+  	<%= f.label :detail %><br>
+  	<%= f.text_area :detail %>
+  </p>
+
+  <% if @task.persisted? %>
+  <p>
+    <%= f.label :completed %> <br />
+    <%= f.check_box :completed %> <br />
+  </p>
+  <% end %>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
