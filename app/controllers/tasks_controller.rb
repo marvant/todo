@@ -16,6 +16,10 @@ class TasksController < ApplicationController
 		@task = Task.find(params[:id])
 	end
 
+	def edit
+		@task = Task.find(params[:id])
+	end
+
 	def new
 		@task = Task.new
 	end
@@ -28,6 +32,16 @@ class TasksController < ApplicationController
 			redirect_to tasks_path
 		else
 			render 'new'
+		end
+	end
+
+	def update
+		@task = Task.find(params[:id])
+
+		if @task.update(task_params)
+			redirect_to @task
+		else
+			render 'edit'
 		end
 	end
 
