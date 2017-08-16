@@ -1,22 +1,124 @@
-<h1>My TODO List</h1>
-<%= link_to "Add Task", new_task_path %><br><br>
-<h2>Open tasks</h2>
+<div class="row text-center">
+    <div class="card">
+		<h1>My List</h1>
+		<%= link_to "Add Task", new_task_path %><br><br>
 
-<% @open_tasks.each do |task| %>
-	<%= link_to task.title, task_path(task) %> - 
-	<%= task.deadline %> - 
-	<%= link_to 'edit', edit_task_path(task) %> | 
-	<%= link_to 'destroy', task_path(task),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %><br>
-<% end %>
+		<ul class="nav nav-tabs" role="tablist">
+		  <li class="nav-item">
+		    <a class="nav-link active" data-toggle="tab" href="#all" role="tab">All</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" data-toggle="tab" href="#open" role="tab">Open</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" data-toggle="tab" href="#completed" role="tab">Completed</a>
+		  </li>
+		</ul>
 
-<h2>Completed tasks</h2>
-<% @completed_tasks.each do |task| %>
-	<%= link_to task.title, task_path(task) %> - 
-	<%= task.deadline %> - 
-	<%= link_to 'edit', edit_task_path(task) %> | 
-	<%= link_to 'destroy', task_path(task),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %><br>
-<% end %>
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <div class="tab-pane active" id="all" role="tabpanel">
+					<table class="table table-hover">
+							<tr>
+								<th></th>
+								<th>Task</th>
+								<th>Due Date</th>
+								<th></th>
+							</tr>
+							<% @tasks.each do |task| %>
+							<tr>
+								<th><% if task.completed %>
+									&#9873;
+									<% end %></th>
+								<th><%= link_to task.title, task_path(task) %></th>
+								<% if past_due?(task) %>
+									<th style="color: red;"><%= task.deadline %></th>
+								<% else %>
+									<th><%= task.deadline %></th>
+									<% end %>
+								<th><%= link_to 'edit', edit_task_path(task) %> | 
+									<%= link_to 'destroy', task_path(task),
+						              method: :delete,
+						              data: { confirm: 'Are you sure?' } %></th>
+						    </tr>
+						    <% end %>
+					</table>
+		  </div>
+		  <div class="tab-pane" id="open" role="tabpanel">
+					<table class="table table-hover">
+							<tr>
+								<th></th>
+								<th>Task</th>
+								<th>Due Date</th>
+								<th></th>
+							</tr>
+							<% @open_tasks.each do |task| %>
+							<tr>
+								<th><% if task.completed %>
+									&#9873;
+									<% end %></th>
+								<th><%= link_to task.title, task_path(task) %></th>
+								<% if past_due?(task) %>
+									<th style="color: red;"><%= task.deadline %></th>
+								<% else %>
+									<th><%= task.deadline %></th>
+									<% end %>
+								<th><%= link_to 'edit', edit_task_path(task) %> | 
+									<%= link_to 'destroy', task_path(task),
+						              method: :delete,
+						              data: { confirm: 'Are you sure?' } %></th>
+						    </tr>
+						    <% end %>
+					</table>
+		  </div>
+		  <div class="tab-pane" id="completed" role="tabpanel">
+		  	<table class="table table-hover">
+							<tr>
+								<th></th>
+								<th>Task</th>
+								<th>Due Date</th>
+								<th></th>
+							</tr>
+							<% @completed_tasks.each do |task| %>
+							<tr>
+								<th><% if task.completed %>
+									&#9873;
+									<% end %></th>
+								<th><%= link_to task.title, task_path(task) %></th>
+								<% if past_due?(task) %>
+									<th style="color: red;"><%= task.deadline %></th>
+								<% else %>
+									<th><%= task.deadline %></th>
+									<% end %>
+								<th><%= link_to 'edit', edit_task_path(task) %> | 
+									<%= link_to 'destroy', task_path(task),
+						              method: :delete,
+						              data: { confirm: 'Are you sure?' } %></th>
+						    </tr>
+						    <% end %>
+					</table>
+		  </div>
+		</div>
+
+			<!-- <h2>Open tasks</h2>
+
+			<% @open_tasks.each do |task| %>
+				<%= link_to task.title, task_path(task) %> - 
+				<%= task.deadline %> - 
+				<%= link_to 'edit', edit_task_path(task) %> | 
+				<%= link_to 'destroy', task_path(task),
+			              method: :delete,
+			              data: { confirm: 'Are you sure?' } %><br>
+			<% end %>
+
+			<h2>Completed tasks</h2>
+			<% @completed_tasks.each do |task| %>
+				<%= link_to task.title, task_path(task) %> - 
+				<%= task.deadline %> - 
+				<%= link_to 'edit', edit_task_path(task) %> | 
+				<%= link_to 'destroy', task_path(task),
+			              method: :delete,
+			              data: { confirm: 'Are you sure?' } %><br>
+			<% end %> -->
+	</div>
+</div>
