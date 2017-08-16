@@ -1,10 +1,21 @@
-<h1><%= @task.title %></h1>
-<h2><%= @task.deadline %></h2>
-<p><%= @task.detail %></p>
-<% if @task.completed %>
-	Completed
-<% else %>
-	Open
-<% end %>
-<br>
-<%= link_to "My Tasks", tasks_path %>
+<div class="row text-center">
+    <div class="card">
+		<h2>Task: <%= @task.title %></h2>
+		<h4>Due Date: <%= @task.deadline %></h4>
+		Note:
+		<p><%= @task.detail %></p>
+		Status: 
+		<% if @task.completed %>
+			Completed
+		<% else %>
+			Open
+		<% end %>
+		<br>
+		<%= link_to 'edit', edit_task_path(@task) %> | 
+						<%= link_to 'destroy', task_path(@task),
+			              method: :delete,
+			              data: { confirm: 'Are you sure?' } %>
+		<br><br>
+		<%= link_to "My Tasks", tasks_path %>
+	</div>
+</div>

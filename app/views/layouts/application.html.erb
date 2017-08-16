@@ -6,10 +6,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-	<div class="page-header">
+	<div class="header" style="text-align: right; border-bottom: 1px solid; box-shadow: 0px 4px 2px lightgrey; padding-right: 10px; height: 30px;">
 	    <% if user_signed_in? %>
 	    	Welcome: <%= current_user.email %> |
 	    	<%= link_to "logout", destroy_user_session_path, method: :delete %>
@@ -17,6 +18,11 @@
 	    	<%= link_to "login", new_user_session_path %> | 
 	    	<%= link_to "Register", new_user_registration_path %>
 	    <% end %>
+	</div>
+	<div class="row">
+  		<div class="container text-center" style="padding: 30px;">
+    		<h1>iTodolist</h1>
+  		</div>
 	</div>
     <%= yield %>
   </body>
