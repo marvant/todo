@@ -4,7 +4,7 @@ Domain: TO-Do List
 Interface: Web (Server) UI
 Language: Ruby
 
-hosted on Heroku: 
+hosted on Heroku: https://itodolist.herokuapp.com
 
 This TODO app allows users to do the following:
 
